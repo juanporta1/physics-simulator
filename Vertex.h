@@ -1,15 +1,19 @@
-#include <glm/glm.hpp>
+#pragma once
 #include <vector>
-#include <array>
-class Vertex {
-public:
-    float x, y, z;
-    glm::vec3 color;
-    std::array<float, 6> vertexData;
 
-    Vertex(float xIn, float yIn, float zIn, const glm::vec3& c)
-        : x(xIn), y(yIn), z(zIn), color(c)
-    {
-        vertexData = { x, y, z, c.r, c.g, c.b };
+struct Vertex {
+    float x, y, z;
+    float r, g, b;
+    std::vector<float> vertexData;
+
+    // Constructor con conversión de píxeles a NDC
+    Vertex(float pixelX, float pixelY, float pz, float pr, float pg, float pb, int screenWidth, int screenHeight) {
+        x = (pixelX / (screenWidth / 2.0f)) - 1.0f;
+        y =  (pixelY / (screenHeight / 2.0f)) - 1.0f; // OpenGL tiene Y invertida respecto a la pantalla
+        z = pz;
+        r = pr;
+        g = pg;
+        b = pb;
+        vertexData = { x, y, z, r, g, b };
     }
-}; 
+};

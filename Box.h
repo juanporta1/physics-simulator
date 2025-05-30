@@ -1,0 +1,8 @@
+#pragma once
+#include <Polygon.h>
+#include <glm/glm.hpp>
+class Box : public Polygon {
+public:
+    Box(float x, float y, float width, float height, glm::vec3 color, float& wW, float& wH);
+    void render() override;
+};
