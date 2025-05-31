@@ -1,21 +1,36 @@
 #include "Polygon.h"
 #include <iostream>
 
+
+void Polygon::updateFloatData() {
+    std::vector<float> data;
+    for (const auto& v : vertices) {
+        data.insert(data.end(), v.vertexData.begin(), v.vertexData.end());
+    }
+    floatData = data;
+}
+
+void Polygon::updateBuffer() {
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, floatData.size() * sizeof(float), floatData.data());
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Polygon::updateVertices(float dt) {
+    float deltaX = velX * dt + 0.5f * accX * (dt * dt);
+    float deltaY = velY * dt + 0.5f * accY * (dt * dt);
+    for (auto& v : vertices) {
+        v.updateVertexData(deltaX, deltaY);
+    }
+}
+
 Polygon::Polygon(const std::vector<Vertex>& verticesList) : vertices(verticesList) {
-    std::vector<float> floatData;
 
 	float totalPosX = 0.0f;
 	float totalPosY = 0.0f;
 
-    // Pasamos los datos a un vector de floats
-    for (const auto& v : vertices) {
-        floatData.insert(floatData.end(), v.vertexData.begin(), v.vertexData.end());
+    updateFloatData();
 	
-    }
-
-	
-    std::cout << posX << std::endl;
-	std::cout << posY << std::endl;
 
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -46,15 +61,18 @@ void Polygon::render() {
     glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertices.size()));
 }
 
+
+
 void Polygon::render(GLenum mode) {
     glBindVertexArray(vao);
     glDrawArrays(mode, 0, static_cast<GLsizei>(vertices.size()));
 }
 
 void Polygon::update(float deltaTime) {
-    
+    updateVertices(deltaTime);
+    updateBuffer();
+    updateFloatData();
 
-
-
-    render();
+    velX += accX * deltaTime;
+    velY += accY * deltaTime;
 }

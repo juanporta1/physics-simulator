@@ -5,6 +5,7 @@
 #include <Polygon.h>
 #include <glm/glm.hpp>
 #include <Box.h>
+#include <Circle.h>
 #include <ReadFile.h>
 #include <chrono>
 #include <thread>
@@ -94,29 +95,30 @@ int main() {
 	glDeleteShader(fragmentShader);
 
 	Box square1(100.0f, 100.0f, 200.0f, 100.0f, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), windowWidth, windowHeight);
-
 	Box square2(150.0f, 100.0f, 200.0f, 100.0f, glm::vec4(0.0, 255.0f, 255.0f, 0.5f),windowWidth, windowHeight);
-	
+	Circle c1(400.0f, 400.0f, 50.0f, 36, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), windowWidth, windowHeight);
+
+	auto lastTime = std::chrono::high_resolution_clock::now();
+
 	while (!glfwWindowShouldClose(window)) {
 
-		auto frameStart = std::chrono::high_resolution_clock::now();
+		auto currentTime = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<float> delta = currentTime - lastTime;
+		float deltaTime = delta.count();
+		lastTime = currentTime;
 
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderProgram);
-	
-		square1.render();
-		square2.render();
-		
+		c1.update(deltaTime);
+		c1.render();
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		auto frameEnd = std::chrono::high_resolution_clock::now();
-		auto elapsed = frameEnd - frameStart;
 
-		if (elapsed < frameDuration) {
-			std::this_thread::sleep_for(frameDuration - elapsed);
-		}
+		
 	}
 	glDeleteProgram(shaderProgram);
 	glfwDestroyWindow(window);

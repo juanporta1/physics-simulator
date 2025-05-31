@@ -39,6 +39,15 @@
     <ClCompile Include="ReadFile.cpp">
       <Filter>Resource Files\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Resource Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvertUnits.cpp">
+      <Filter>Resource Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Resource Files\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h">
@@ -51,6 +60,12 @@
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="ReadFile.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvertUnits.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
   </ItemGroup>
