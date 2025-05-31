@@ -1,5 +1,16 @@
-﻿  main.cpp
-C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\main.cpp(41,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\main.cpp(41,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  Box.cpp
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(6,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(6,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(7,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(7,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(8,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(8,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(9,71): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Box.cpp(9,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Polygon.cpp
+  main.cpp
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\main.cpp(44,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\main.cpp(44,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   PhysicsSimulator.vcxproj -> C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\x64\Debug\PhysicsSimulator.exe

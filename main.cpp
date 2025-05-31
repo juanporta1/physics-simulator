@@ -6,7 +6,8 @@
 #include <glm/glm.hpp>
 #include <Box.h>
 #include <ReadFile.h>
-
+#include <chrono>
+#include <thread>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 	glViewport(0, 0, width, height);
@@ -21,6 +22,8 @@ void processInput(GLFWwindow* window) {
 int main() {
 	float windowWidth = 1280;
 	float windowHeight = 720;
+	const int FPS = 60;
+	const std::chrono::duration<double, std::milli> frameDuration(1000.0 / FPS);
 
 	std::string fragmentShaderSource = readFile("fragmentShader.glsl");
 	const char* fsSource = fragmentShaderSource.c_str();
@@ -52,6 +55,11 @@ int main() {
 		std::cout << "Failed to initialize GLAD\n";
 		return -1;
 	}
+
+	//Habilitar la transparencia
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 
 	//Compliacion de los Shaders
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -85,19 +93,30 @@ int main() {
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	Box square1(100.0f, 100.0f, 200.0f, 100.0f, glm::vec3(255.0f, 255.0f, 255.0f),windowWidth, windowHeight);
+	Box square1(100.0f, 100.0f, 200.0f, 100.0f, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), windowWidth, windowHeight);
+
+	Box square2(150.0f, 100.0f, 200.0f, 100.0f, glm::vec4(0.0, 255.0f, 255.0f, 0.5f),windowWidth, windowHeight);
 	
 	while (!glfwWindowShouldClose(window)) {
+
+		auto frameStart = std::chrono::high_resolution_clock::now();
+
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shaderProgram);
 	
 		square1.render();
-		
+		square2.render();
 		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+		auto frameEnd = std::chrono::high_resolution_clock::now();
+		auto elapsed = frameEnd - frameStart;
+
+		if (elapsed < frameDuration) {
+			std::this_thread::sleep_for(frameDuration - elapsed);
+		}
 	}
 	glDeleteProgram(shaderProgram);
 	glfwDestroyWindow(window);
