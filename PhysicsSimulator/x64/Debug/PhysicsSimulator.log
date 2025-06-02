@@ -1,9 +1,7 @@
-﻿  Box.cpp
-  Circle.cpp
-C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Circle.cpp(9,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Polygon.cpp
-  main.cpp
-C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\main.cpp(45,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\main.cpp(45,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+﻿  Circle.cpp
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Circle.cpp(14,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Circle.cpp(14,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Circle.cpp(17,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Circle.cpp(20,97): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\Circle.cpp(20,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   PhysicsSimulator.vcxproj -> C:\Users\Tripulante\Desktop\Repos\PhysicsSimulator\x64\Debug\PhysicsSimulator.exe

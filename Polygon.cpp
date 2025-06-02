@@ -1,4 +1,5 @@
 #include "Polygon.h"
+#include <GLFW/glfw3.h>
 #include <iostream>
 
 
@@ -24,7 +25,7 @@ void Polygon::updateVertices(float dt) {
     }
 }
 
-Polygon::Polygon(const std::vector<Vertex>& verticesList) : vertices(verticesList) {
+Polygon::Polygon(const std::vector<Vertex>& verticesList, GLFWwindow* w) : vertices(verticesList), window(w) {
 
 	float totalPosX = 0.0f;
 	float totalPosY = 0.0f;

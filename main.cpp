@@ -49,6 +49,8 @@ int main() {
 		return -1;
 	}
 
+	
+
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	
@@ -94,9 +96,9 @@ int main() {
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	Box square1(100.0f, 100.0f, 200.0f, 100.0f, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), windowWidth, windowHeight);
-	Box square2(150.0f, 100.0f, 200.0f, 100.0f, glm::vec4(0.0, 255.0f, 255.0f, 0.5f),windowWidth, windowHeight);
-	Circle c1(400.0f, 400.0f, 50.0f, 36, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), windowWidth, windowHeight);
+	Box square1(100.0f, 100.0f, 200.0f, 100.0f, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), window);
+	Box square2(150.0f, 100.0f, 200.0f, 100.0f, glm::vec4(0.0, 255.0f, 255.0f, 0.5f), window);
+	Circle c1(400.0f, 400.0f, 50.0f, 36, glm::vec4(255.0f, 255.0f, 255.0f, 1.0f), window);
 
 	auto lastTime = std::chrono::high_resolution_clock::now();
 
@@ -113,7 +115,8 @@ int main() {
 		glUseProgram(shaderProgram);
 		c1.update(deltaTime);
 		c1.render();
-
+		square1.update(deltaTime);
+		square1.render();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		auto frameEnd = std::chrono::high_resolution_clock::now();
